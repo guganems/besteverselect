@@ -1,0 +1,1 @@
+let select = new BestEverSelect('selectbox');
