@@ -1,19 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style-type: none;
+        }
+        /* #selectbox {
+            display: none;
+        } */
+        .selector-container {
+            max-width: 30%;
+        }
+
+        .selector {
+            border: 1px solid #888;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .list-block {
+            border: 1px solid #888;
+            border-top: none;
+        }
+        .list-ul {
+            overflow-y: scroll;
+            height: 200px;  /* test size */
+            padding: 15px 4px;
+        }
+
+        .list-ul li:hover {
+            background: cornflowerblue;
+            color: #fff;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .search-block {
+            display: flex;
+            justify-content: center;
+        }
+        .search {
+            width: 100%;
+            margin: 5px;
+            padding: 3px;
+        }
+    </style>
 </head>
+
 <body>
-<div >
-    <select name="" id="selectbox" class="selectbox">
-        <option value="js">js</option>
-        <option value="php">php</option>
-        <option value="java">java</option>
-        <option value="guga nems">guga nems</option>
-    </select>
-</div>
+    <div class="selector-container">
+        <div class="selector" id="selector">choose</div>
+        <div class="dropdown-content" id="dropDownContent">
+            <select name="" id="selectbox" class="selectbox" onchange="test()">
+                <option value="Js">Js</option>
+                <option value="php">Php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+                <option value="php">php</option>
+                <option value="java">java</option>
+                <option value="guga nems">guga nems</option>
+            </select>
+        </div>
+    </div>
+   
     <script src="besteverselect.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

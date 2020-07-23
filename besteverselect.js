@@ -10,25 +10,32 @@ class BestEverSelect {
         element.addEventListener('click', function () {
             document.getElementById('shittySelectInput').style.display = "block";
         });
-        document.getElementById('shittySelectInput').addEventListener('keyup', function () {
-            let searchValue = document.getElementById('shittySelectInput').value;
-            let options = element.options;
-            for (let option of options) {
-                if (!option.innerText.includes(searchValue)) {
-                    option.style.display = "none";
-                }
-                else {
-                    option.style.display = "";
-                }
-            }
-            for (let option of options) {
-                if (option.style.display !== "none") {
-                    element.value = option.value;
-                    return;
-                }
-            }
-        });
+
+
+        // function addOptions() {
+        //     let info = [...d];
+        //     // console.log(info);
+
+        //     let selectDropdown = document.getElementById('test');
+        //     var selectDropdownIndex = selectDropdown.options[selectDropdown.selectedIndex].value;
+        //     if (selectDropdownIndex != '') {
+        //         info = info.filter(each => {
+        //             // console.log(each);
+        //             if (each.value === selectDropdownIndex) {
+        //                 console.log();
+        //             }
+        //         });
+        //     }
+        // }
+        // addOptions();
+
+
+
+
+
+    
     }
+    
     getData() {
         let data = [];
         let obj = {};
@@ -45,21 +52,32 @@ class BestEverSelect {
     drawSelectbox(element) {
         let data = "";
         for (let entry of this.data) {
-            data += `<li data-value="${entry.value}">${entry.text}</li>`;
+            data += `<li class="li" data-value="${entry.value}" onclick="selectedDropDown(this)">${entry.text}</li>`;
         }
         let input = `
-            <div>
-                <span><input style="display: none;" type="text" id="shittySelectInput"/></span>
                 <span>
-                    <ul>
+                    <input style="display: none;" type="text" id="shittySelectInput"/>
+                </span>
+                <div class="list-block">
+                    <div class="search-block">
+                        <input type="text" name="search" id="search" class="search">
+                    </div>
+                    <ul class="list-ul">
                         ${data}
                     </ul>
-                </span>
-            </div>
+                </div>
         `;
-    }
-    addInput(element) {
-        let input = `<input style="display: none; border-radius: 10px;" type="text" id="shittySelectInput"/>`;
         element.insertAdjacentHTML('beforebegin', input);
-    }
+
+    }    
 }
+function selectedDropDown (element) {
+    document.getElementById("selector").innerHTML = element.innerHTML;
+    document.getElementById("dropDownContent").classList.toggle("active");
+    let dropDown = document.getElementById("selectbox").value;
+
+    document.getElementById("selectbox").value = element.dataset.value;
+}
+document.getElementById ("selector").addEventListener("click", () =>  {
+    document.getElementById("dropDownContent").classList.toggle("active")
+});
