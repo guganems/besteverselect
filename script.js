@@ -1,4 +1,4 @@
-let select = new BestEverSelect('selectbox');
+let select = new BestEverSelect('selectbox', "KA");
 
 
 

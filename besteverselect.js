@@ -1,5 +1,9 @@
 class BestEverSelect {
-    constructor(id) {
+    constructor(id, lang = "EN") {
+        switch (lang) {
+            case "EN": this.choose = "Choose"; break;
+            case "KA": this.choose = "აირჩიეთ"; break;
+        }
         this.id = id;
         this.init();
     }
@@ -7,35 +11,22 @@ class BestEverSelect {
         this.getData();
         let element = document.getElementById(this.id);
         this.drawSelectbox(element);
-        element.addEventListener('click', function () {
-            document.getElementById('shittySelectInput').style.display = "block";
+        document.getElementById ("selector").addEventListener("click", () =>  {
+            document.getElementById("dropDownContent").classList.toggle("shitty_active")
         });
-
-
-        // function addOptions() {
-        //     let info = [...d];
-        //     // console.log(info);
-
-        //     let selectDropdown = document.getElementById('test');
-        //     var selectDropdownIndex = selectDropdown.options[selectDropdown.selectedIndex].value;
-        //     if (selectDropdownIndex != '') {
-        //         info = info.filter(each => {
-        //             // console.log(each);
-        //             if (each.value === selectDropdownIndex) {
-        //                 console.log();
-        //             }
-        //         });
-        //     }
-        // }
-        // addOptions();
-
-
-
-
-
-    
+        document.getElementById('search').addEventListener('keyup', function () {
+            let searchValue = this.value;
+            let lis = document.getElementsByClassName('shitty_li');
+            for (let option of lis) {
+                if (!option.innerText.includes(searchValue)) {
+                    option.style.display = "none";
+                }
+                else {
+                    option.style.display = "";
+                }
+            }
+        });
     }
-    
     getData() {
         let data = [];
         let obj = {};
@@ -50,34 +41,35 @@ class BestEverSelect {
         this.data = data;
     }
     drawSelectbox(element) {
+        // element.style.display = "none";
         let data = "";
+        let id = this.id;
         for (let entry of this.data) {
-            data += `<li class="li" data-value="${entry.value}" onclick="selectedDropDown(this)">${entry.text}</li>`;
+            data += `<li class="shitty_li" data-selectid="${this.id}" data-value="${entry.value}" onclick="ShittyUtils.selectedDropDown(this)">${entry.text}</li>`;
         }
         let input = `
-                <span>
-                    <input style="display: none;" type="text" id="shittySelectInput"/>
-                </span>
-                <div class="list-block">
-                    <div class="search-block">
-                        <input type="text" name="search" id="search" class="search">
+                <div class="shitty_selector-container">
+                    <div class="shitty_selector" id="selector">${this.choose}</div>
+                    <div class="shitty_dropdown-content" id="dropDownContent">
+                        <div class="shitty_list-block">
+                            <div class="shitty_search-block">
+                                <input type="text" name="search" id="search" class="shitty_search">
+                            </div>
+                            <ul class="shitty_list-ul">
+                                ${data}
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="list-ul">
-                        ${data}
-                    </ul>
                 </div>
         `;
         element.insertAdjacentHTML('beforebegin', input);
-
-    }    
+    }
 }
-function selectedDropDown (element) {
-    document.getElementById("selector").innerHTML = element.innerHTML;
-    document.getElementById("dropDownContent").classList.toggle("active");
-    let dropDown = document.getElementById("selectbox").value;
-
-    document.getElementById("selectbox").value = element.dataset.value;
+class ShittyUtils {
+    static selectedDropDown(element) {
+        let id = element.dataset.selectid;
+        document.getElementById("selector").innerHTML = element.innerHTML;
+        document.getElementById("dropDownContent").classList.toggle("shitty_active");
+        document.getElementById(id).value = element.dataset.value;
+    }
 }
-document.getElementById ("selector").addEventListener("click", () =>  {
-    document.getElementById("dropDownContent").classList.toggle("active")
-});

@@ -1,0 +1,42 @@
+.shitty_selector-container {
+    max-width: 30%;
+}
+
+.shitty_selector {
+    border: 1px solid #888;
+    cursor: pointer;
+    padding: 5px;
+}
+.shitty_list-block {
+    border: 1px solid #888;
+    border-top: none;
+}
+.shitty_list-ul{
+    overflow-y: scroll;
+    height: 200px;  /* test size */
+    padding: 15px 4px;
+}
+.shitty_list-ul li {
+    list-style-type: none;
+}
+
+.shitty_list-ul li:hover {
+    background: cornflowerblue;
+    color: #fff;
+    cursor: pointer;
+}
+.shitty_dropdown-content {
+    display: none;
+}
+.shitty_active {
+    display: block;
+}
+.shitty_search-block {
+    display: flex;
+    justify-content: center;
+}
+.shitty_search {
+    width: 100%;
+    margin: 5px;
+    padding: 3px;
+}
